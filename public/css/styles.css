@@ -14,3 +14,10 @@ body {
   color: #fff;
   background-color: #000;
 }
+
+#genderPref {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: .5rem;
+}
