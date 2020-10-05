@@ -11,59 +11,46 @@
           <form action="/register" method="POST">
             <div class="form-group">
               <label for="name">Employee Name</label>
-              <input id="name" type="text" class="form-control">
+              <input id="name" type="text" class="form-control" name="empName">
             </div>
             <div class="form-group">
               <label for="age">Age</label>
-              <input id="age" type="number" class="form-control">
+              <input id="age" type="number" class="form-control" name="EmpAge">
             </div>
             <div id= "genderPref" class="form-group">
               <label style="display:block;">Gender</label>
               <label for="gender">Male</label>
-              <input id="gender" type="checkbox" class="form-control" value="Male">
+              <input id="gender" type="checkbox" class="form-control" value="Male" name="genSel">
               <label for="gender">Female</label>
-              <input id="gender" type="checkbox" class="form-control" value="Female">
+              <input id="gender" type="checkbox" class="form-control" value="Female" name="genSel">
             </div>
             <div class="form-group">
               <!-- Type set as text since employee ID might be alpha-numeric -->
               <label for="empId">Employee ID</label>
-              <input id="empId" type="text" class="form-control">
+              <input id="empId" type="text" class="form-control" name="empID">
             </div>
             <div class="form-group">
               <label for="currPost">Current Position</label>
-              <input id="currPost" type="text" class="form-control">
+              <input id="currPost" type="text" class="form-control" name="currPost">
             </div>
             <div class="form-group">
               <label for="salary">Salary</label>
-              <input id="salary" type="number" class="form-control">
+              <input id="salary" type="number" class="form-control" name="salary">
             </div>
               <div class="form-group">
-                <label for="name">Related Departments</label>
-                <input type="text" class="form-control">
+                <label for="relatedDept">Related Departments</label>
+                <input id="relatedDept" type="text" class="form-control" name="relatedDept">
               </div>
               <div class="form-group">
-                <label for="name">Additional Information</label>
-                <input type="text" class="form-control">
+                <label for="moreInfo">Additional Information</label>
+                <input id="moreInfo" type="text" class="form-control" name="moreInfo">
               </div>
               <div class="form-group">
             <button type="submit" class="btn btn-dark">Register</button>
           </form>
-
         </div>
       </div>
     </div>
-
-    <!-- <div class="col-sm-4">
-      <div class="card social-block">
-        <div class="card-body">
-          <a class="btn btn-block" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign Up with Google
-          </a>
-        </div>
-      </div>
-    </div> -->
-
   </div>
 </div>
 
