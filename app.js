@@ -73,25 +73,28 @@ app.get("/secrets", (req, res) => {
 });
 
 app.post("/register", (req, res) =>{
-  const newEmp = req.body.genSel;
-  console.log(newEmp);
-});
-
-app.post("/login", (req, res)=>{
-  const user = new User({
-    username: req.body.username,
-    password: req.body.password
+  const newEmp = new Employee({
+    name: req.body.empName,
+    age: req.body.EmpAge,
+    gender: req.body.genSel,
+    empID: req.body.empID,
+    currPost: req.body.currPost,
+    salary: req.body.salary,
+    relatedDept: req.body.relatedDept,
+    info: req.body.moreInfo
   });
 
-  req.login(user, err => {
+  newEmp.save(err=>{
     if(err){
       console.log(err);
     } else {
-      passport.authenticate("local")(req, res, () => {
-        res.redirect("/secrets");
-      });
+      console.log("Successfully added new employee"); // TODO: provide option to add more employees
     }
-  })
+  });
+});
+
+app.post("/login", (req, res)=>{
+ // TODO: allow admin access after credential verification
 });
 
 app.get("/logout", (req, res) => {
