@@ -19,7 +19,6 @@ mongoose.connect("mongodb://localhost:27017/hrDB",
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-//mongoose.set("useCreateIndex", true);
 
 const employeeSchema = new mongoose.Schema ({
   name: String,
@@ -39,7 +38,16 @@ app.get("/", (req, res) => {
 });
 
 app.get("/table", (req, res) =>{
-  res.render("table")
+  res.render("table", {
+    empID: "ABC123446",
+    empName: "Deepro Sengupta",
+    empAge: 25,
+    empGender: "Male",
+    empPost: "Web-Developer",
+    empSalary: 50000,
+    empRelDept: "IT Data",
+    empInfo: "None"
+  });
 });
 
 app.get("/login", (req, res) => {

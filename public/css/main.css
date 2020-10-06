@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: OpenSans-Regular;
-  src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
 }
 
 
@@ -14,8 +14,8 @@
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 * {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 }
 
@@ -255,22 +255,28 @@ tbody tr:hover {
     top: 0;
   }
   table tbody tr td:nth-child(1):before {
-    content: "Date";
+    content: "Employee ID";
   }
   table tbody tr td:nth-child(2):before {
-    content: "Order ID";
-  }
-  table tbody tr td:nth-child(3):before {
     content: "Name";
   }
+  table tbody tr td:nth-child(3):before {
+    content: "Age";
+  }
   table tbody tr td:nth-child(4):before {
-    content: "Price";
+    content: "Gender";
   }
   table tbody tr td:nth-child(5):before {
-    content: "Quantity";
+    content: "Current Position";
   }
   table tbody tr td:nth-child(6):before {
-    content: "Total";
+    content: "Salary";
+  }
+  table tbody tr td:nth-child(7):before {
+    content: "Related Departments";
+  }
+  table tbody tr td:nth-child(8):before {
+    content: "Additional Information";
   }
 
   .column4,
