@@ -21,7 +21,7 @@ mongoose.connect("mongodb://localhost:27017/hrDB",
 });
 mongoose.set('useFindAndModify', false);
 
-const employeeSchema = new mongoose.Schema ({
+const employeeSchema = new mongoose.Schema({
   name: String,
   age: Number,
   gender: String,
@@ -33,7 +33,13 @@ const employeeSchema = new mongoose.Schema ({
   status: String
 });
 
+const adminSchema = new mongoose.Schema({
+  adminID: String,
+  adminPassword: String
+});
+
 const Employee = new mongoose.model("Employee", employeeSchema);
+const Admin = new mongoose.model("Admin", adminSchema);
 
 app.route("/")
   .get((req, res) => {
@@ -44,24 +50,61 @@ app.route("/login")
   .get((req, res) => {
     res.render("login");
   })
-  .post((req, res)=>{
-    // TODO: allow admin access after credential verification
-    if(req.body.username === 'admin@admin.com' && req.body.password === 'admin123'){
-      res.redirect("/table")
-    }
+  .post((req, res) => {
+    Admin.findOne({adminID: req.body.username}, (err, foundAdmin) => {
+      if(err){
+        console.log(err);
+      } else {
+        if(foundAdmin.adminPassword === req.body.password){
+          Employee.find({}, (err, foundEmployee) => {
+            if(err){
+              res.redirect("/login");
+            } else {
+              res.render("table", {
+                foundEmployees: foundEmployee
+              });
+            };
+          });
+        };
+      };
+    });
   });
 
-app.get("/table", (req, res) =>{
-  Employee.find({}, (err, foundEmployee)=>{
-    if (err){
-      console.log(err);
-    } else {
-      res.render("table", {
-        foundEmployees: foundEmployee
+// app.get("/table", (req, res) =>{
+//   Employee.find({}, (err, foundEmployee)=>{
+//     if (err){
+//       console.log(err);
+//     } else {
+//       res.render("table", {
+//         foundEmployees: foundEmployee
+//       });
+//     };
+//   });
+// });
+
+app.route("/superUser")
+  .get((req, res) =>{
+    res.render("registerAdmin");
+  })
+
+  .post((req, res) => {
+    if(req.body.superPassword === "superAdmin25"){
+      const newAdmin = new Admin({
+        adminID: req.body.username,
+        adminPassword: req.body.password
       });
+      newAdmin.save(err => {
+        if(err){
+          console.log(err);
+        } else {
+          console.log("Successfully Added New Admin");
+        }
+      });
+    } else {
+      console.log("Invalid Super User Password");
     };
+    res.redirect("/");
   });
-});
 
 app.route("/register")
   .get((req, res) => {
