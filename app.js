@@ -19,6 +19,7 @@ mongoose.connect("mongodb://localhost:27017/hrDB",
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
+mongoose.set('useFindAndModify', false);
 
 const employeeSchema = new mongoose.Schema ({
   name: String,
@@ -82,6 +83,7 @@ app.route("/register")
       console.log(err);
     } else {
       console.log("Successfully added new employee"); // TODO: provide option to add more employees
+      res.redirect("/table");
     }
   });
 });
@@ -93,8 +95,36 @@ app.route("/edit/:id")
         employee: employeeRecord
       });
     })
+  })
+  .post((req, res) =>{
+    Employee.findByIdAndUpdate(req.params.id,{
+      name: req.body.empName,
+      age: req.body.EmpAge,
+      gender: req.body.genSel,
+      empID: req.body.empID,
+      currPost: req.body.currPost,
+      salary: req.body.salary,
+      relatedDept: req.body.relatedDept,
+      info: req.body.moreInfo
+    }, err =>{
+      if(!err){
+        console.log("Successfully Update");
+        res.redirect("/table")
+      }
+    })
   });
 
+app.route("/edit/delete/:id")
+  .post((req, res) => {
+    Employee.findOneAndDelete({_id: req.params.id}, err => {
+      if(err){
+        console.log(err);
+      } else {
+        console.log("Employee Deleted");
+        res.redirect("/table");
+      }
+    });
+  });
 
 app.get("/logout", (req, res) => {
   req.logout();

@@ -8,14 +8,14 @@
         <div class="card-body">
 
           <!-- Makes POST request to add employee route -->
-          <form action="/register" method="post">
-            <div id= "genderPref" class="form-group">
+          <form action="/edit/<%=employee._id%>" method="post">
+            <!-- <div id= "genderPref" class="form-group">
               <label>Employee Status</label>
               <label for="fired">Fired</label>
               <input id="fired" type="checkbox" class="form-control" value="fired" name="Fired">
               <label for="Retired">Retired</label>
               <input id="retired" type="checkbox" class="form-control" value="retired" name="retired">
-            </div>
+            </div> -->
             <div class="form-group">
               <label for="name">Employee Name</label>
               <input id="name" type="text" class="form-control" name="empName" value="<%=employee.name%>">
@@ -26,10 +26,17 @@
             </div>
             <div id= "genderPref" class="form-group">
               <label style="display:block;">Gender</label>
-              <label for="gender">Male</label>
-              <input id="gender" type="checkbox" class="form-control" value="<%=employee.gender%>" name="genSel">
-              <label for="gender">Female</label>
-              <input id="gender" type="checkbox" class="form-control" value="<%=employee.gender%>" name="genSel">
+              <% if (employee.gender === "Male") { %>
+                <label for="gender">Male</label>
+                <input id="gender" type="checkbox" class="form-control" value="<%=employee.gender%>" name="genSel" checked>
+                <label for="gender">Female</label>
+                <input id="gender" type="checkbox" class="form-control" value="Female" name="genSel">
+              <%} else {%>
+                <label for="gender">Male</label>
+                <input id="gender" type="checkbox" class="form-control" value="Male" name="genSel">
+                <label for="gender">Female</label>
+                <input id="gender" type="checkbox" class="form-control" value="<%=employee.gender%>" name="genSel" checked>
+              <%}%>
             </div>
             <div class="form-group">
               <!-- Type set as text since employee ID might be alpha-numeric -->
@@ -52,8 +59,10 @@
                 <label for="moreInfo">Additional Information</label>
                 <input id="moreInfo" type="text" class="form-control" value="<%=employee.info%>" name="moreInfo">
               </div>
-              <div class="form-group">
-            <button type="submit" class="btn btn-dark">Update Records</button>
+              <button type="submit" class="btn btn-dark">Update Records</button>
+          </form>
+          <form class="delete-btn-form" action="/edit/delete/<%=employee._id%>" method="post">
+            <button type="submit" class="btn btn-danger">Delete Employee</button>
           </form>
         </div>
       </div>
