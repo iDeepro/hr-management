@@ -4,6 +4,9 @@
   <div class="container-table100">
     <div class="wrap-table100">
       <div class="table100">
+        <div class="newEmp-btn">
+          <a href="/register"><h4>Add New Employee</h4></a>
+        </div>
         <table>
           <thead>
             <tr class="table100-head">
@@ -15,25 +18,38 @@
               <th class="column6">Salary</th>
               <th class="column1">Related Departments</th>
               <th class="column1">Additional Information</th>
+              <th class="column1">Actions</th>
             </tr>
           </thead>
           <tbody>
-              <tr>
-                <td class="column1"><%=empID%></td>
-                <td class="column2"><%=empName%></td>
-                <td class="column3"><%=empAge%></td>
-                <td class="column4"><%=empGender%></td>
-                <td class="column5"><%=empPost%></td>
-                <td class="column6"><%=empSalary%></td>
-                <td class="column1"><%=empRelDept%></td>
-                <td class="column1"><%=empInfo%></td>
+              <% foundEmployees.forEach(foundEmployee =>{%>
+                <tr>
+                <td class="column1"><%=foundEmployee.empID%></td>
+                <td class="column2"><%=foundEmployee.name%></td>
+                <td class="column3"><%=foundEmployee.age%></td>
+                <td class="column4"><%=foundEmployee.gender%></td>
+                <td class="column5"><%=foundEmployee.currPost%></td>
+                <td class="column6"><%=foundEmployee.salary%></td>
+                <td class="column1"><%=foundEmployee.relatedDept%></td>
+                <td class="column1"><%=foundEmployee.info%></td>
+                <td class="column1"><a href="/edit" id="<%=foundEmployee._id%>">Edit</a></td>
               </tr>
+              <% })%>
+
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </div>
+
+
+<!-- <form action="index.html" method="post">
+  <label for="fired">Fired</label>
+  <input id="fired" type="checkbox" name="fired" value="fired">
+  <label for="retired">Retired</label>
+  <input id="retired" type="checkbox" name="retired" value="retired">
+</form> -->
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
