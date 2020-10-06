@@ -34,20 +34,20 @@ const employeeSchema = new mongoose.Schema ({
 const Employee = new mongoose.model("Employee", employeeSchema);
 
 app.route("/")
-.get((req, res) => {
-  res.render("home");
-});
+  .get((req, res) => {
+    res.render("home");
+  });
 
 app.route("/login")
-.get((req, res) => {
-  res.render("login");
-})
-.post((req, res)=>{
- // TODO: allow admin access after credential verification
- if(req.body.username === 'admin@admin.com' && req.body.password === 'admin123'){
-   res.redirect("/table")
- }
-});
+  .get((req, res) => {
+    res.render("login");
+  })
+  .post((req, res)=>{
+    // TODO: allow admin access after credential verification
+    if(req.body.username === 'admin@admin.com' && req.body.password === 'admin123'){
+      res.redirect("/table")
+    }
+  });
 
 app.get("/table", (req, res) =>{
   Employee.find({}, (err, foundEmployee)=>{
@@ -59,40 +59,23 @@ app.get("/table", (req, res) =>{
       });
     };
   });
-  // res.render("table", {
-  //   empID: "ABC123446",
-  //   empName: "Deepro Sengupta",
-  //   empAge: 25,
-  //   empGender: "Male",
-  //   empPost: "Web-Developer",
-  //   empSalary: 50000,
-  //   empRelDept: "IT Data",
-  //   empInfo: "None"
-  // });
 });
 
 app.route("/register")
-.get((req, res) => {
-  res.render("register");
-})
-.post((req, res) =>{
-  const newEmp = new Employee({
-    name: req.body.empName,
-    age: req.body.EmpAge,
-    gender: req.body.genSel,
-    empID: req.body.empID,
-    currPost: req.body.currPost,
-    salary: req.body.salary,
-    relatedDept: req.body.relatedDept,
-    info: req.body.moreInfo
-  });
-
-app.get("/secrets", (req, res) => {
-  // USE THIS ROUTE TO DISPLAY EMPLOYEE TABLE TO ADMIN
-  //1. Authenticate admin
-
-  //2. Render table ejs template after authentication
-});
+  .get((req, res) => {
+    res.render("register");
+  })
+  .post((req, res) =>{
+    const newEmp = new Employee({
+      name: req.body.empName,
+      age: req.body.EmpAge,
+      gender: req.body.genSel,
+      empID: req.body.empID,
+      currPost: req.body.currPost,
+      salary: req.body.salary,
+      relatedDept: req.body.relatedDept,
+      info: req.body.moreInfo
+    });
 
   newEmp.save(err=>{
     if(err){
@@ -103,13 +86,20 @@ app.get("/secrets", (req, res) => {
   });
 });
 
+app.route("/edit/:id")
+  .get((req, res)=>{
+    Employee.findById(req.params.id, (err, employeeRecord) =>{
+      res.render("edit", {
+        employee: employeeRecord
+      });
+    })
+  });
+
 
 app.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
-
-
 
 app.listen(3000, ()=>{
   console.log("Server started on Port 3000");

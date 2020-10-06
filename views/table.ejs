@@ -32,7 +32,7 @@
                 <td class="column6"><%=foundEmployee.salary%></td>
                 <td class="column1"><%=foundEmployee.relatedDept%></td>
                 <td class="column1"><%=foundEmployee.info%></td>
-                <td class="column1"><a href="/edit" id="<%=foundEmployee._id%>">Edit</a></td>
+                <td class="column1"><a href="/edit/<%=foundEmployee._id%>" id="<%=foundEmployee._id%>">Edit</a></td>
               </tr>
               <% })%>
 
@@ -42,14 +42,6 @@
     </div>
   </div>
 </div>
-
-
-<!-- <form action="index.html" method="post">
-  <label for="fired">Fired</label>
-  <input id="fired" type="checkbox" name="fired" value="fired">
-  <label for="retired">Retired</label>
-  <input id="retired" type="checkbox" name="retired" value="retired">
-</form> -->
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
