@@ -279,6 +279,9 @@ tbody tr:hover {
     content: "Additional Information";
   }
   table tbody tr td:nth-child(9):before {
+    content: "Status";
+  }
+  table tbody tr td:nth-child(10):before {
     content: "Actions";
   }
 

@@ -29,7 +29,8 @@ const employeeSchema = new mongoose.Schema ({
   currPost: String,
   salary: Number,
   relatedDept: String,
-  info: String
+  info: String,
+  status: String
 });
 
 const Employee = new mongoose.model("Employee", employeeSchema);
@@ -75,7 +76,8 @@ app.route("/register")
       currPost: req.body.currPost,
       salary: req.body.salary,
       relatedDept: req.body.relatedDept,
-      info: req.body.moreInfo
+      info: req.body.moreInfo,
+      status: "Active"
     });
 
   newEmp.save(err=>{
@@ -105,7 +107,8 @@ app.route("/edit/:id")
       currPost: req.body.currPost,
       salary: req.body.salary,
       relatedDept: req.body.relatedDept,
-      info: req.body.moreInfo
+      info: req.body.moreInfo,
+      status: req.body.status
     }, err =>{
       if(!err){
         console.log("Successfully Update");

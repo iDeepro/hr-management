@@ -18,6 +18,7 @@
               <th class="column6">Salary</th>
               <th class="column1">Related Departments</th>
               <th class="column1">Additional Information</th>
+              <th class="column1">Status</th>
               <th class="column1">Actions</th>
             </tr>
           </thead>
@@ -32,6 +33,7 @@
                 <td class="column6"><%=foundEmployee.salary%></td>
                 <td class="column1"><%=foundEmployee.relatedDept%></td>
                 <td class="column1"><%=foundEmployee.info%></td>
+                <td class="column1"><%=foundEmployee.status%></td>
                 <td class="column1"><a href="/edit/<%=foundEmployee._id%>" id="<%=foundEmployee._id%>">Edit</a></td>
               </tr>
               <% })%>
