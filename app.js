@@ -4,9 +4,6 @@ const express = require('express');
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-//const session = require('express-session');
-//const passport = require('passport');
-//const passportLocalMongoose = require('passport-local-mongoose');
 
 
 const app = express();
@@ -16,15 +13,6 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-
-// app.use(session({
-//   secret: "our little secret.",
-//   resave: false,
-//   saveUninitialized: false
-// }));
-//
-// app.use(passport.initialize());
-// app.use(passport.session());
 
 mongoose.connect("mongodb://localhost:27017/hrDB",
 {
@@ -44,16 +32,14 @@ const employeeSchema = new mongoose.Schema ({
   info: String
 });
 
-//userScheme.plugin(passportLocalMongoose);
-
 const Employee = new mongoose.model("Employee", employeeSchema);
-
-// passport.use(User.createStrategy());
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
 
 app.get("/", (req, res) => {
   res.render("home");
+});
+
+app.get("/table", (req, res) =>{
+  res.render("table")
 });
 
 app.get("/login", (req, res) => {
@@ -65,11 +51,10 @@ app.get("/register", (req, res) => {
 });
 
 app.get("/secrets", (req, res) => {
-  if(req.isAuthenticated()){
-    res.render("secrets");
-  } else {
-    res.redirect("/login");
-  }
+  // USE THIS ROUTE TO DISPLAY EMPLOYEE TABLE TO ADMIN
+  //1. Authenticate admin
+
+  //2. Render table ejs template after authentication
 });
 
 app.post("/register", (req, res) =>{
