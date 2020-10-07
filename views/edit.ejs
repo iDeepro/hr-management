@@ -22,7 +22,7 @@
               <input id="age" type="number" class="form-control" name="EmpAge" value="<%=employee.age%>">
             </div>
             <div id="genderPref" class="form-group">
-              <label style="display:block;">Gender</label>
+              <label style="display:block;padding-right: 50px;" for="gender">Gender</label>
               <% if (employee.gender === "Male") { %>
               <label for="gender">Male</label>
               <input id="gender" type="checkbox" class="form-control" value="<%=employee.gender%>" name="genSel" checked>

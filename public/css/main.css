@@ -17,6 +17,7 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
+  text-align: right;
 }
 
 body, html {
@@ -310,4 +311,47 @@ tbody tr:hover {
     padding-left: 15px;
     padding-right: 15px;
   }
+}
+
+.BUTTON_XJB {
+  margin-bottom: 10px;
+   background: #ED3DF6;
+   background-image: -webkit-linear-gradient(top, #ED3DF6, #1E62D0);
+   background-image: -moz-linear-gradient(top, #ED3DF6, #1E62D0);
+   background-image: -ms-linear-gradient(top, #ED3DF6, #1E62D0);
+   background-image: -o-linear-gradient(top, #ED3DF6, #1E62D0);
+   background-image: -webkit-gradient(to bottom, #ED3DF6, #1E62D0);
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   height: 12px;
+   line-height: 12px;
+   color: #FFFFFF;
+   font-family: Open Sans;
+   width: 137px;
+   font-size: 13px;
+   padding: 12px;
+   -webkit-box-shadow: 1px 1px 20px 0 #000000;
+   -moz-box-shadow: 1px 1px 20px 0 #000000;
+   box-shadow: 1px 1px 20px 0 #000000;
+   text-shadow: 1px 1px 20px #000000;
+   border: solid #337FED 1px;
+   text-decoration: none;
+   display: inline-block;
+   cursor: pointer;
+   text-align: center;
+}
+
+.BUTTON_XJB:hover {
+   border: solid #337FED 0;
+   background: #D01EA7;
+   background-image: -webkit-linear-gradient(top, #D01EA7, #381CBE);
+   background-image: -moz-linear-gradient(top, #D01EA7, #381CBE);
+   background-image: -ms-linear-gradient(top, #D01EA7, #381CBE);
+   background-image: -o-linear-gradient(top, #D01EA7, #381CBE);
+   background-image: -webkit-gradient(to bottom, #D01EA7, #381CBE);
+   -webkit-border-radius: 63px;
+   -moz-border-radius: 63px;
+   border-radius: 63px;
+   text-decoration: none;
 }
